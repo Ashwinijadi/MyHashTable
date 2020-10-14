@@ -48,6 +48,22 @@ public class MyLinkedList_HashMap<K, V> {
 		}
 	}
 
+	public MyMapNode<K, V> remove(K key) {
+		int index = this.getBucketIndex(key);
+		MyLinkedList<K> myLinkedList = this.myBucketArray.get(index);
+		if (myLinkedList == null) {
+			return null;
+		} else {
+			MyMapNode<K, V> myMapNode = (MyMapNode<K, V>) myLinkedList.delete(key);
+			if (myMapNode == null) {
+				return null;
+			} else {
+				myLinkedList.deleteAndReturnSizeOfList(myMapNode);
+				return myMapNode;
+			}
+		}
+	}
+
 	public int size() {
 		return size;
 	}

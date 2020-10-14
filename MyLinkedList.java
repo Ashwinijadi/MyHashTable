@@ -84,18 +84,16 @@ public class MyLinkedList<K> {
 		return tempNode;
 	}
 
-	public INode deleteAndGetSizeOfList(K key) {
-		INode tempNode = head;
-		while (tempNode != null && tempNode.getNext() != null) {
-			if (tempNode.getKey().equals(key)) {
-				break;
-			} else {
-				tempNode = tempNode.getNext();
-			}
+	public void deleteAndReturnSizeOfList(INode deleteNode) {
+		INode tempNode = this.head;
+		INode prev = null;
+
+		while (tempNode != null && tempNode.getKey() != deleteNode.getKey()) {
+			prev = tempNode;
+			tempNode = tempNode.getNext();
 		}
-		tempNode.setNext(tempNode.getNext().getNext());
-		size--;
-		return tempNode;
+		prev.setNext(tempNode.getNext());
+		tempNode.setNext(null);
 	}
 
 	public INode delete(K key) {
