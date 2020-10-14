@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class MyLinkedList_HashMap<K, V> {
 
 	private final int numBuckets;
+	private int size;
 	ArrayList<MyLinkedList<K>> myBucketArray;
 
 	public MyLinkedList_HashMap() {
@@ -45,6 +46,14 @@ public class MyLinkedList_HashMap<K, V> {
 		} else {
 			myMapNode.setValue(value);
 		}
+	}
+
+	public int size() {
+		return size;
+	}
+
+	public boolean isEmpty() {
+		return size() == 0;
 	}
 
 	@Override

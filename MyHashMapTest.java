@@ -5,22 +5,23 @@ import org.junit.Test;
 
 public class MyHashMapTest {
 
+	
 	@Test
-	public void givenSentenceAndWordsAddedToListShouldReturnWordFrequencyTest() {
-		String sentence = "To be or not to be";
-		MyHashMap<String, Integer> myHashMap = new MyHashMap<>();
-		String words[] = sentence.toLowerCase().split(" ");
-		for (String s : words) {
-			Integer value = myHashMap.get(s);
+	public void givenASentenceWhenWordsAreAddedToListShouldReturnWordsFrequency() {
+		String sentence = "Paranoids are not paranoid because they are paranoid but"
+				        + " because they keep putting themselves deliberately "
+				        + "into paranoid avoidable situations";
+		MyLinkedList_HashMap<String, Integer> myLinkedHashMap = new MyLinkedList_HashMap();
+		String[] words = sentence.toLowerCase().split(" ");
+		for (String word : words) {
+			Integer value = myLinkedHashMap.get(word);
 			if (value == null)
 				value = 1;
 			else
-				value++;
-			myHashMap.add(s, value);
+				value = value + 1;
+			myLinkedHashMap.add(word, value);
 		}
-		int frequency = myHashMap.get("to");
-		System.out.println(myHashMap);
-		Assert.assertEquals(2, frequency);
+		int frequency = myLinkedHashMap.get("paranoid");
+		Assert.assertEquals(3, frequency);
 	}
-
 }
